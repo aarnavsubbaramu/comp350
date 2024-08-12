@@ -28,3 +28,22 @@ if __name__ == "__main__":
         list_directory_classified()
     else:
         list_directory()
+
+import time
+
+def list_directory_detailed():
+    """List files and directories with details (last modified date, size)."""
+    files = os.listdir('.')
+    for file in files:
+        stats = os.stat(file)
+        modified_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(stats.st_mtime))
+        size = stats.st_size if os.path.isfile(file) else 0
+        print(f"{modified_time} {size:10} {file}")
+
+if __name__ == "__main__":
+    if '-l' in args:
+        list_directory_detailed()
+    elif '-F' in args:
+        list_directory_classified()
+    else:
+        list_directory()
