@@ -47,3 +47,25 @@ if __name__ == "__main__":
         list_directory_classified()
     else:
         list_directory()
+
+def print_help():
+    """Print help information."""
+    help_text = """Usage: pyls [options]
+Options:
+  -F       Append indicator (one of */) to entries
+  -l       Use a long listing format
+  -h, --help  Display this help and exit
+    """
+    print(help_text)
+
+if __name__ == "__main__":
+    if '-h' in args or '--help' in args:
+        print_help()
+    elif '-l' in args and '-F' in args:
+        list_directory_detailed_classified()
+    elif '-l' in args:
+        list_directory_detailed()
+    elif '-F' in args:
+        list_directory_classified()
+    else:
+        list_directory()
